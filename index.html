@@ -1,1 +1,137 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SouthScreen - South Indian Movies</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101018;
+      color: white;
+    }
+    header {
+      background: #e50914;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 15px;
+      background: #20202b;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    .hero {
+      padding: 45px 20px;
+      text-align: center;
+      background: #292033;
+    }
+    .hero h2 { font-size: 28px; }
+    input {
+      width: 85%;
+      max-width: 400px;
+      padding: 13px;
+      border-radius: 8px;
+      border: 0;
+    }
+    main { padding: 20px; }
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
+    .movie {
+      background: #252532;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .movie h3 { color: #ff626b; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #20202b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎬 SouthScreen</h1>
+    <p>Your South Indian Movie Guide</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#movies">Movies</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>Discover South Indian Cinema</h2>
+    <p>Telugu • Tamil • Kannada • Malayalam</p>
+    <input id="search" type="search"
+      placeholder="Search movie names..."
+      oninput="searchMovies()">
+  </section>
+
+  <main id="movies">
+    <h2>🎥 Explore Movies</h2>
+    <div class="movies" id="movieList">
+      <article class="movie">
+        <h3>Telugu Cinema</h3>
+        <p>Explore Telugu movies</p>
+      </article>
+      <article class="movie">
+        <h3>Tamil Cinema</h3>
+        <p>Explore Tamil movies</p>
+      </article>
+      <article class="movie">
+        <h3>Kannada Cinema</h3>
+        <p>Explore Kannada movies</p>
+      </article>
+      <article class="movie">
+        <h3>Malayalam Cinema</h3>
+        <p>Explore Malayalam movies</p>
+      </article>
+    </div>
+    <p id="noResults" hidden>No matching movies found.</p>
+
+    <section id="about">
+      <h2>About SouthScreen</h2>
+      <p>SouthScreen helps movie fans explore South Indian cinema.
+      Movie listings and release dates will be added as the site grows.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 SouthScreen | Made for Movie Fans ❤️</p>
+  </footer>
+
+  <script>
+    function searchMovies() {
+      const query = document.getElementById("search").value.toLowerCase();
+      const cards = document.querySelectorAll(".movie");
+      let visible = 0;
+
+      cards.forEach(card => {
+        const match = card.innerText.toLowerCase().includes(query);
+        card.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+
+      document.getElementById("noResults").hidden = visible > 0;
+    }
+  </script>
+</body>
+        </html>
+        
